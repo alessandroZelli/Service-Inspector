@@ -11,3 +11,8 @@ Tester.ps1 tests wether the active services are present in the chosen list (whic
 
 The filepaths are designed with variables, to change the folder in which the lists are saved it's sufficient to assign to the $filepath variable  of both scripts the desired path.  
 
+
+
+TO  DO LIST:
+- Negative testing: check for services that have been disabled from list creation.
+- Process tester: same thing but with windows processes.
