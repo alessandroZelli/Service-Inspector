@@ -5,7 +5,7 @@ It consists of 2 .bat files (used to run the powershell scripts) and 2 .ps1 file
 
 Use the .bat files to run the corresponding scripts, execution order should be ListGenerator.bat first, then Tester.bat.
 
-ListGenerator-ps1 creates a folder called ServiceInspector under C:\. Then it creates a list of active services, which on its first start will be the master list, to be used with the tester to check which new services have been activated from that snapshot.
+ListGenerator-ps1 creates a folder called ServiceInspector under C:\. Then it creates a list of active services, which on its first start will be the master list, to be used with the tester to check which new services have been activated or stopped from that snapshot.
 
 Tester.ps1 tests wether the active services are present in the chosen list (which can be different from the master list if ListGenerator has been launched multiple times). If not they are printed to screen. It also display  the names  of  the services that were stopped from the chosen list creation.
 
