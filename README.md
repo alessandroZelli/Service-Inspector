@@ -1,7 +1,7 @@
 # Service-Inspector
 Simple powershell utility to check for active services against a previous snapshot of those. 
 
-It consists of 2 .bat files (used to run the powershell scripts) and 2 .ps1 files with the actual scripts in them. Downlload all four file and put them in the same folder, as the batch are designed to run the scripts in the same folder. You can still use desktop shortcuts on those or launch them from the shell.
+It consists of 2 .bat files (used to run the powershell scripts) and 2 .ps1 files with the actual scripts in them. Download all four file and put them in the same folder, as the batch are designed to run the scripts in the same folder. You can still use desktop shortcuts on those or launch them from the shell.
 
 Use the .bat files to run the corresponding scripts, execution order should be ListGenerator.bat first, then Tester.bat.
 
