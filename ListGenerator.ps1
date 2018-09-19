@@ -8,8 +8,8 @@ $todaysDateHumanFriendly =  Get-Date -DisplayHint Date
 
 $filePathMaster = $filePath+"MasterServiceList.csv"
 $filePathBackup = $filePath+"MasterServiceList_"+$todaysDate+".csv.old" #Ex. MasterServiceList_2018-07-25.csv.old
-$filePathTemp = $filePath+$todaysDate+"_"+"ServiceListUpdate.csv" #Ex. 2018-07-25_ServiceList.csv
-
+$filePathTemp = $filePath+$todaysDate+"_"+"ServiceListUpdate" #Ex. 2018-07-25_ServiceListUpdate.
+$extension = ".csv"
 
 Write-Host
 Write-Host "Service List on $todaysDateHumanFriendly"
@@ -24,11 +24,11 @@ Write-Host
 
 if(-not(Test-Path -Path $filePath)){
     #Creates the master folder if not existent
-    Write-Host  "Cartella $filePath assente, procedo alla creazione" 
+    Write-Host  "$filePath directory doesn't exist, proceeding to creation" 
     mkdir $filePath | Out-Null
     Write-Host
     Write-Host
-    Write-Host "Cartella $filePath creata"
+    Write-Host "$filePath directory created."
     Write-Host
     Write-Host
 }
@@ -41,8 +41,18 @@ Write-Host
 Write-Host
 $tempUpdateController=Read-Host -prompt  $tempPromptString 
 if($tempUpdateController.ToLower() -eq 'y'){
+#CONTROLLARE>>
     
-    $serviceListArr | Select-Object -Property name,DisplayName,status | Export-csv -Path $filePathTemp -delimiter ';' -NoTypeInformation
+        if(Test-Path -Path ("$filePathTemp"+"$extension")){
+            [array]$fileList=Get-ChildItem $filePath | Where-Object{$_.Name -match $todaysDate -and $_.Name -notmatch "Master"}
+            [int32]$index=$fileList.Length
+            $filePathMain="$filePathTemp"+"$index"+$extension
+            }
+        else{
+            $filePathMain=$filePathTemp+$extension
+        }
+
+    $serviceListArr | Select-Object -Property name,DisplayName,status | Export-csv -Path $filePathMain -delimiter ';' -NoTypeInformation
     Write-host "Services saved"
     Write-Host
     Write-Host

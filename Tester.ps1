@@ -9,7 +9,7 @@ Write-Host
 if($fileSelector -eq "y"){
    [array]$fileList=Get-ChildItem $filePath | Where-Object{$_.Name -notmatch 'Master'}
    for($i=0; $i -lt $fileList.length; $i++){
-   Write-Host "$i - $filelist[$i]" 
+   Write-Host "$i - "$filelist[$i] 
    }
    Write-Host
    Write-Host
